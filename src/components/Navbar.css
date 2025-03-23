@@ -1,26 +1,163 @@
 .navbar {
   width: 100%;
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: rgba(24, 35, 50, 0.8);
+  backdrop-filter: blur(5px);
+  border-bottom: 3px solid #ef233c;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.home{
+  width: 90px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links li {
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-links li:hover {
+  color: #ef233c;
+}
+
+.nav-links li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background-color: #ef233c;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links li:hover::after {
+  width: 80%;
+}
+
+/* Crewmate shaped button */
+.crewmate-button {
+  position: relative;
+  width: 60px;
+  height: 80px;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: transform 0.3s;
+}
+
+.crewmate-button:hover {
+  transform: scale(1.1);
+}
+
+.crewmate-body {
+  position: absolute;
+  width: 60px;
+  height: 70px;
+  background-color: #ef233c;
+  border-radius: 30px 30px 25px 25px;
+  bottom: 0;
+}
+
+.crewmate-visor {
+  position: absolute;
+  width: 35px;
+  height: 25px;
+  background-color: #8adbf0;
+  border-radius: 5px 15px 5px 5px;
+  top: 20px;
+  left: 30px;
+  border: 3px solid #b5b5b5;
+}
+
+.crewmate-legs {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  width: 40px;
+  height: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leg {
+  width: 15px;
+  height: 15px;
+  background-color: #ef233c;
+  border-radius: 0 0 5px 5px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    margin-top: 1rem;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: white;
-    color: black;
+    gap: 1rem;
   }
-  .logo{
-    width: 100px;
-    cursor: pointer;
-  }
-  ul{
-    cursor: pointer;
-    flex: 1;
-    list-style: none;
-    text-align: center;
-  }
-  ul li{
-    display: inline-block;
-    margin: 10 20px;
-    font-size: 18px;
-    position: relative;
-    cursor: pointer;
-  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #0a0e18; /* Space background - dark blue/black */
+  overflow-x: hidden;
+}
+
+/* Star background animation */
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+.stars {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
